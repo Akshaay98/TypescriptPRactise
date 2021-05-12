@@ -1,0 +1,53 @@
+import { ChangeEvent, useReducer, useState } from "react";
+import "./App.css";
+const App = () => {
+
+  interface InitialState{
+    score:number
+  }
+  
+  const initialState = { score: 0 };
+
+  type ACTION = | { type: "INCREASE", payload: number } | { type: "DECREASE", payload: string } | { type: "RESET" };
+  
+
+
+  const reducer = (state:InitialState, action:ACTION) => {
+    switch (action.type) {
+      case "INCREASE":
+        return {
+          ...state,
+          score:state.score+action.payload
+        }
+      case "DECREASE":
+        return{
+          ...state,
+          score:state.score+Number(action.payload)
+        }
+      case "RESET":
+        return {
+          ...state,
+          score:0
+        }
+      
+        
+    
+      default:
+       return state
+    }
+  }
+  
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+  return (
+   
+    <div>
+      counte:{state.score}
+      <button onClick={()=>dispatch({type:"INCREASE",payload:1})}>Increae</button>
+      <button onClick={()=>dispatch({type:"DECREASE",payload:"1"})}>dereae</button>
+      <button   onClick={()=>dispatch({type:"RESET"})}>reset</button>
+    </div>
+  );
+};
+
+export default App;
