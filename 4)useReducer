@@ -1,0 +1,39 @@
+import { ChangeEvent, useReducer, useState } from "react";
+import "./App.css";
+
+interface InitialState{
+  count:number
+}
+
+const initialState = { count: 0 };
+type ACTIONTYPE =
+  | { type: "increment"; payload: number }
+  | { type: "decrement"; payload: string|Number };
+
+const reducer = (state: InitialState, action: ACTIONTYPE) => {
+    switch (action.type) {
+      case "increment":
+        return { count: state.count + action.payload };
+      case "decrement":
+        return { count: state.count - Number(action.payload) };
+      default:
+        throw new Error();
+    }
+}
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+ 
+  return (
+    <>
+    Count: {state.count}
+    <button onClick={() => dispatch({type:"increment",payload:1})}>
+      -
+    </button>
+    <button onClick={() => dispatch({ type:"decrement",payload:"1"})}>
+      +
+    </button>
+  </>
+  );
+};
+
+export default App;
