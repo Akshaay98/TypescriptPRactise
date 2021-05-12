@@ -1,0 +1,59 @@
+///main component
+
+import "./App.css";
+import Test from "./Test1";
+const App = () => {
+  return (
+    <div className="App">
+      <span>Hey</span>
+      <Test userName={"akshay"} age={21} place={null}  />
+    </div>
+  );
+};
+
+export default App;
+
+//Props
+interface IAppOwnProps {
+  userName: String;
+  age: Number;
+  place: String | null;
+}
+const Test: React.FC<IAppOwnProps> = ({
+  userName,
+  age,
+  place,
+}): JSX.Element => {
+  return (
+    <div className="App">
+      <h1>{userName}</h1>
+      <span>{age}</span>
+      <h1>{place}</h1>
+    </div>
+  );
+};
+
+export default Test;
+
+///or Props
+
+const Test = ({
+  userName,
+  age,
+  place,
+}: {
+  userName: String;
+  age: Number;
+  place: String | null;
+}): JSX.Element => {
+  return (
+    <div className="App">
+      <h1>{userName}</h1>
+      <span>{age}</span>
+      <h1>{ place}</h1>
+    </div>
+  );
+};
+
+export default Test;
+
