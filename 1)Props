@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className="App">
       <span>Hey</span>
-      <Test userName={"akshay"} age={21} place={null}  />
+    <Test userName={"akshay"} age={21} place={null} userType={"moderator"} />
     </div>
   );
 };
@@ -18,20 +18,25 @@ interface IAppOwnProps {
   userName: String;
   age: Number;
   place: String | null;
+  userType:"Admin"|"moderator"| "leader"
 }
 const Test: React.FC<IAppOwnProps> = ({
   userName,
   age,
   place,
+  userType
 }): JSX.Element => {
   return (
     <div className="App">
       <h1>{userName}</h1>
       <span>{age}</span>
       <h1>{place}</h1>
+      <h3>{ userType}</h3>
     </div>
   );
 };
+
+export default Test;
 
 export default Test;
 
