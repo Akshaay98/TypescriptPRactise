@@ -1,0 +1,28 @@
+import { ChangeEvent, useState } from "react";
+import "./App.css";
+import Test from "./Test1";
+const App = () => {
+  const [timer, setTimer] = useState<Date>(new Date(Date.now()));
+
+  const [message, setMessage] = useState<string>("");
+
+  setInterval(() => {
+    setTimer(new Date(Date.now()));
+  }, 1000);
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value)
+  }
+
+  return (
+    <div className="App">
+      <Test userName={"akshay"} age={21} place={null} userType={"leader"} />
+      <h4>{timer.toUTCString()}</h4>
+      <input type="text" value={message}
+      onChange={changeHandler}
+      />
+      <p>{ message}</p>
+    </div>
+  );
+};
+
+export default App;
