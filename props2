@@ -1,0 +1,59 @@
+import { ChangeEvent, useState } from "react";
+import "./App.css";
+import Test1 from "./Test1";
+const App = () => {
+
+  const fun1 = (num: Number) => {
+    return num
+  }
+  const person={
+    userName:"askhay",
+    studies:"bach"
+  }
+ 
+  return (
+    <div className="App">
+     <h1>Putas</h1>
+      <Test1
+        name={"akshay"}
+        age={12}
+        place={"bglore"}
+        person={person }
+        fun1={fun1}
+      />
+    </div>
+  );
+};
+
+export default App;
+
+///props///
+import React from "react";
+
+interface Person {
+  userName: String;
+  studies: String;
+}
+
+interface iTest1Props {
+  name: String;
+  age: Number;
+  place?: String;
+  fun1: (int: Number) => Number;
+  person: Person;
+}
+
+const Test1: React.FC<iTest1Props> = ({ name, age, place, fun1, person }) => {
+  return (
+    <div>
+      <p>{name}</p>
+      <p>{age}</p>
+      <p>{place}</p>
+      <p>{person.userName}</p>
+      <p>{person.studies}</p>
+      <p>{(fun1(1))}</p>
+    </div>
+  );
+};
+
+export default Test1;
